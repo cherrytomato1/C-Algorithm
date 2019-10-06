@@ -9,6 +9,8 @@
 */
 #include<stdio.h>
 
+
+/* 오답 1 . for 루프 사용시 큰 입력 시 계산 제한 시간 촟과
 int main()
 {
 	unsigned int a, b, v,pv=0, day=1;
@@ -22,5 +24,24 @@ int main()
 			break;
 
 	printf("%d", day);
+	return 0;
+}*/
+
+int main()
+{
+	unsigned int a, b, v, pv = 0, day = 1;
+	float tmp_day = 0;
+
+	scanf_s("%d", &a);
+	scanf_s("%d", &b);
+	scanf_s("%d", &v);
+	
+	tmp_day = (float)(v-b) / (a - b);
+	
+		
+	
+	//day = (v / a) - (v / b + 1);
+
+	printf("%f",tmp_day);
 	return 0;
 }
