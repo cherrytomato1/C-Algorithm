@@ -6,11 +6,15 @@
 달팽이는 낮에 A미터 올라갈 수 있다. 하지만, 밤에 잠을 자는 동안 B미터 미끄러진다. 또, 정상에 올라간 후에는 미끄러지지 않는다.
 
 달팽이가 나무 막대를 모두 올라가려면, 며칠이 걸리는지 구하는 프로그램을 작성하시오.
+
+제한시간 0.15초
+
+입력 값은 0~10억
 */
+
 #include<stdio.h>
 
-
-/* 오답 1 . for 루프 사용시 큰 입력 시 계산 제한 시간 촟과
+/* 오답 1 . for 루프 사용시 큰 입력 시 계산 제한 시간 초과
 int main()
 {
 	unsigned int a, b, v,pv=0, day=1;
@@ -27,21 +31,28 @@ int main()
 	return 0;
 }*/
 
+/*			실패2
 int main()
 {
-	unsigned int a, b, v, pv = 0, day = 1;
+	int a, b, v, pv = 0, day = 1;
 	float tmp_day = 0;
 
 	scanf_s("%d", &a);
 	scanf_s("%d", &b);
 	scanf_s("%d", &v);
 	
-	tmp_day = (float)(v-b) / (a - b);
+	if (v <= a)
+	{
+		printf("1");
+		return 0;
+	}
+	day= (v - b) / (a - b);
+	tmp_day = (float)( v - b) / (a - b);
 	
-		
-	
-	//day = (v / a) - (v / b + 1);
+	if (day < tmp_day)
+		day++;
 
-	printf("%f",tmp_day);
+	printf("%d",day);
 	return 0;
 }
+*/
