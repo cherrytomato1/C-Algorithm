@@ -31,11 +31,10 @@ int main()
 	return 0;
 }*/
 
-/*			½ÇÆĞ2
+			
 int main()
 {
-	int a, b, v, pv = 0, day = 1;
-	float tmp_day = 0;
+	int a, b, v, day;
 
 	scanf_s("%d", &a);
 	scanf_s("%d", &b);
@@ -46,13 +45,16 @@ int main()
 		printf("1");
 		return 0;
 	}
-	day= (v - b) / (a - b);
-	tmp_day = (float)( v - b) / (a - b);
+	day= (v - a - 1) / (a - b) +2;
 	
-	if (day < tmp_day)
-		day++;
 
 	printf("%d",day);
 	return 0;
+}
+
+/*
+int main()
+{
+	int a, b, v, day=0;
 }
 */
