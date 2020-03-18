@@ -104,6 +104,12 @@ int main()
 using namespace std;
 
 int main() {
+
+	
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cout.tie(nullptr);
+
 	stack<char> fstk, bstk;
 	int pos,T;
 	string str,res,temp;
@@ -130,10 +136,10 @@ int main() {
 					fstk.pop();
 				}
 				break;
-			case 'R' :
+			case 'D' :
 				if (!bstk.empty())
 				{
-					fstk.push(fstk.top());
+					fstk.push(bstk.top());
 					bstk.pop();
 				}
 				break;
@@ -142,7 +148,8 @@ int main() {
 				fstk.push(param);
 				break;
 			case 'B' :
-				fstk.pop();
+				if(!fstk.empty())
+					fstk.pop();
 				break;
 		}
 		cin.ignore();
@@ -150,15 +157,13 @@ int main() {
 
 	while (!fstk.empty())
 	{
-		temp = fstk.top();
-		res = temp + res;
+		bstk.push(fstk.top());
 		fstk.pop();
 	}
 	while (!bstk.empty())
 	{
-		temp = bstk.top();
-		res = res + temp;
+		cout << bstk.top();
 		bstk.pop();
 	}
-	cout << res << "\n";
+
 }
