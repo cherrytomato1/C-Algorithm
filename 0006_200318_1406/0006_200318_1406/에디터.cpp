@@ -20,7 +20,7 @@ P $	$라는 문자를 커서 왼쪽에 추가함
 
 1406*/
 
-
+/*
 #include <iostream>
 #include <string>
 #include <stack>
@@ -28,11 +28,10 @@ P $	$라는 문자를 커서 왼쪽에 추가함
 
 using namespace std;
 
-string str;
+string str,fstr,bstr;
 
 void P( int pos,char param)
 {
-	string fstr,bstr;
 	fstr= str.substr(0,pos);
 	bstr = str.substr(pos, str.length() - pos);
 
@@ -41,7 +40,6 @@ void P( int pos,char param)
 }
 void B(int pos)
 {
-	string fstr, bstr;
 	fstr = str.substr(0, pos);
 	bstr = str.substr(pos, str.length() - pos);
 
@@ -57,6 +55,7 @@ int main()
 
 	int pos;
 	char cmd, param;
+	stack<char> pstk,bstk;
 	int T;
 
 	getline(cin, str);
@@ -72,7 +71,8 @@ int main()
 		{
 			case 'P' :
 				cin >> param;
-				P(pos++, param);
+				//P(pos++, param);
+				
 				break;
 			case 'L' :
 				if(pos)
@@ -93,4 +93,72 @@ int main()
 	}
 	cout << str << "\n";
 	
+}
+*/
+
+#include <iostream>
+#include <string>
+#include <stack>
+
+
+using namespace std;
+
+int main() {
+	stack<char> fstk, bstk;
+	int pos,T;
+	string str,res,temp;
+	char cmd,param;
+	
+	getline(cin, str);
+	pos = str.length();
+
+	for (int i = 0; i < pos; i++)
+		fstk.push(str[i]);
+
+	cin >> T;
+	cin.ignore();
+	
+
+	while (T--)
+	{
+		cin >> cmd;
+		switch (cmd) {
+			case 'L' :
+				if (!fstk.empty())
+				{
+					bstk.push(fstk.top());
+					fstk.pop();
+				}
+				break;
+			case 'R' :
+				if (!bstk.empty())
+				{
+					fstk.push(fstk.top());
+					bstk.pop();
+				}
+				break;
+			case 'P' : 
+				cin >> param;
+				fstk.push(param);
+				break;
+			case 'B' :
+				fstk.pop();
+				break;
+		}
+		cin.ignore();
+	}
+
+	while (!fstk.empty())
+	{
+		temp = fstk.top();
+		res = temp + res;
+		fstk.pop();
+	}
+	while (!bstk.empty())
+	{
+		temp = bstk.top();
+		res = res + temp;
+		bstk.pop();
+	}
+	cout << res << "\n";
 }
