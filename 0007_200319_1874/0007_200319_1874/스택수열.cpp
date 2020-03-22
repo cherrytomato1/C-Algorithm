@@ -21,6 +21,7 @@ push와 pop 연산을 수행해야 하는지를 알아낼 수 있다.이를 계산하는 프로그램을 작성
 using namespace std;
 
 int main() {
+
 	ios_base::sync_with_stdio(false);
 	cin.tie(nullptr);
 	cout.tie(nullptr);
@@ -42,7 +43,6 @@ int main() {
 
 	for (int i = 0; i < N; i++)			//정수배열을 다 채울때 까지
 	{
-
 		while(stk.empty()||stk.top() < num[i])				//이전 작업에서 스택을 비웠을 시 top 호출하면 런타임 에러==>> 따라서 empty 먼저 검사
 		{
 			stk.push(++pnum);
@@ -56,7 +56,7 @@ int main() {
 		else if (stk.top() > num[i])	
 		{
 			cout << "NO";
-			return 1;
+			return 0;									//return -1 금지
 		}
 	}
 
