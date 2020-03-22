@@ -1,80 +1,64 @@
-/*Á¤¼ö¸¦ ÀúÀåÇÏ´Â ½ºÅÃÀ» ±¸ÇöÇÑ ´ÙÀ½, ÀÔ·ÂÀ¸·Î ÁÖ¾îÁö´Â ¸í·ÉÀ» Ã³¸®ÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ½Ã¿À.
+/*ë¬¸ìž¥ì´ ì£¼ì–´ì¡Œì„ ë•Œ, ë‹¨ì–´ë¥¼ ëª¨ë‘ ë’¤ì§‘ì–´ì„œ ì¶œë ¥í•˜ëŠ” í”„ë¡œê·¸ëž¨ì„ ìž‘ì„±í•˜ì‹œì˜¤.ë‹¨, ë‹¨ì–´ì˜ ìˆœì„œëŠ” ë°”ê¿€ ìˆ˜ ì—†ë‹¤.ë‹¨ì–´ëŠ” ì˜ì–´ ì•ŒíŒŒë²³ìœ¼ë¡œë§Œ ì´ë£¨ì–´ì ¸ ìžˆë‹¤.
 
-¸í·ÉÀº ÃÑ ´Ù¼¸ °¡ÁöÀÌ´Ù.
+ìž…ë ¥
+ì²«ì§¸ ì¤„ì— í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ì˜ ê°œìˆ˜ Tê°€ ì£¼ì–´ì§„ë‹¤.ê° í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ëŠ” í•œ ì¤„ë¡œ ì´ë£¨ì–´ì ¸ ìžˆìœ¼ë©°, ë¬¸ìž¥ì´ í•˜ë‚˜ ì£¼ì–´ì§„ë‹¤.ë‹¨ì–´ì˜ ê¸¸ì´ëŠ” ìµœëŒ€ 20, ë¬¸ìž¥ì˜ ê¸¸ì´ëŠ” ìµœëŒ€ 1000ì´ë‹¤.ë‹¨ì–´ì™€ ë‹¨ì–´ ì‚¬ì´ì—ëŠ” ê³µë°±ì´ í•˜ë‚˜ ìžˆë‹¤.
 
-push X : Á¤¼ö X¸¦ ½ºÅÃ¿¡ ³Ö´Â ¿¬»êÀÌ´Ù.
-pop : ½ºÅÃ¿¡¼­ °¡Àå À§¿¡ ÀÖ´Â Á¤¼ö¸¦ »©°í, ±× ¼ö¸¦ Ãâ·ÂÇÑ´Ù.¸¸¾à ½ºÅÃ¿¡ µé¾îÀÖ´Â Á¤¼ö°¡ ¾ø´Â °æ¿ì¿¡´Â - 1À» Ãâ·ÂÇÑ´Ù.
-size : ½ºÅÃ¿¡ µé¾îÀÖ´Â Á¤¼öÀÇ °³¼ö¸¦ Ãâ·ÂÇÑ´Ù.
-empty : ½ºÅÃÀÌ ºñ¾îÀÖÀ¸¸é 1, ¾Æ´Ï¸é 0À» Ãâ·ÂÇÑ´Ù.
-top : ½ºÅÃÀÇ °¡Àå À§¿¡ ÀÖ´Â Á¤¼ö¸¦ Ãâ·ÂÇÑ´Ù.¸¸¾à ½ºÅÃ¿¡ µé¾îÀÖ´Â Á¤¼ö°¡ ¾ø´Â °æ¿ì¿¡´Â - 1À» Ãâ·ÂÇÑ´Ù
+ì¶œë ¥
+ê° í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ì— ëŒ€í•´ì„œ, ìž…ë ¥ìœ¼ë¡œ ì£¼ì–´ì§„ ë¬¸ìž¥ì˜ ë‹¨ì–´ë¥¼ ëª¨ë‘ ë’¤ì§‘ì–´ ì¶œë ¥í•œë‹¤.
+
+ì˜ˆì œ ìž…ë ¥ 1
+2
+I am happy today
+We want to win the first prize
+ì˜ˆì œ ì¶œë ¥ 1
+I ma yppah yadot
+eW tnaw ot niw eht tsrif ezirp
 
 */
 
+
 #include <iostream>
-#include <vector>
 #include <string>
+#include <stack>
 
 
 using namespace std;
 
 int main()
 {
-	int arr[10000];
-	int top = -1;
-	string req;
-	int N;
-	int arg;
+	int T;
+	stack<char> stk;		//charí˜• ìŠ¤íƒì„ ì–¸
+	string str;				//ìž…ë ¥ ë¬¸ìžì—´
+	int c;					//ìºë¦­í„° ìžë¦¬ 1
+	int npos;				//ìºë¦­í„° ì¸ë±ìŠ¤
 
-	for (int i = 0; i < 10000; i++)
-		arr[i] = NULL;
+	cin >> T;				//í…ŒìŠ¤íŠ¸ ì¼€ì´ìŠ¤ ìˆ˜
 
-	cin >> N;
-	while (N--)
+	cin.ignore();
+
+	while (T--)
 	{
-		cin >> req;
+		getline(cin, str);
 
-		if (req == "push")
+		for (npos = 0; npos<str.length(); npos++)
 		{
-			cin >> arg;
-			arr[++top] = arg;
-			
-			//cout << "push " << arg << ", top " << top << endl;
-		}
-		else if (req == "pop")
-		{
-			if (arr[top] == NULL || top < 0)
-				cout << "-1" << endl;
-			else
+			c = str.at(npos);
+
+			if (c == ' ')
 			{
-				cout << arr[top] << endl;
-				arr[top--] = NULL;
-
+				for (;!stk.empty(); stk.pop())
+					cout << stk.top();	
+				cout << ' ';
+			}
+			else
+				stk.push(c);
+			if (npos + 1 == str.length())
+			{
+				for (; !stk.empty(); stk.pop())
+					cout << stk.top();
+				cout << endl;
 			}
 		}
-
-		else if (req == "top")
-		{
-			if (top >= 0)
-				cout << arr[top] << endl;
-			else
-				cout << -1 << endl;
-		}
-
-		else if (req == "empty")
-		{
-			if (top < 0)
-				cout << 1 << endl;
-			else
-				cout << 0 << endl;
-		}
-
-		else if (req == "size")
-		{
-			cout << top + 1 << endl;
-		}
-
-		cin.ignore();
-
+		
 	}
-	return 0;
 }
