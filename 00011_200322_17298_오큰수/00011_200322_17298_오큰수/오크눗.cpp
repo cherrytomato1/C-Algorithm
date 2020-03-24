@@ -9,47 +9,9 @@
 
 17298 오큰수 1초
 */
-/*
 #include<iostream>
 #include<string>
-
-using namespace std;
-
-int main()
-{
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	int N=0;
-	int *arr;
-	int j,num;
-
-	cin >> N;
-
-	arr = (int*)malloc(sizeof(int)*N);
-
-	for (int i = 0; i < N; i++)
-		cin >> arr[i];
-
-	for (int i = 0; i < N; i++,num=-1)
-	{
-		for (j = i+1; j < N; j++)
-		{
-			if (arr[j] > arr[i])
-			{
-				num=arr[j];
-				break;
-			}
-		}
-		cout << num << " ";
-	}
-}
-*/
-
-
-#include<iostream>
-#include<string>
+#include<vector>
 #include<stack>
 
 using namespace std;
@@ -60,56 +22,48 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int N = 0;
-	stack<int> stk1,stk2,stk3,stk4;
-	int j, num,val;
+	int N;
+	vector<int> V,resV;
+	stack<int> stk;
 
 	cin >> N;
+	V.resize(N);
 
-	
+	for (int i=0; i < N; i++)
+		cin >> V[i];
+
+	resV.resize(N,-1);
+
+	for (int i = N-1; i >= 0; i--)
+	{
+		while (!stk.empty() && stk.top() <= V[i])
+			stk.pop();
+
+		if (stk.empty())
+			resV[i] = -1;
+		else
+			resV[i] = stk.top();
+
+		stk.push(V[i]);
+		
+	}
 
 	for (int i = 0; i < N; i++)
-	{
-		cin >> val;
-		stk1.push(val);
-	}
-
-
-	while (!stk1.empty())
-	{
-		if (stk2.empty())
-			num = -1;
-		else 
-		{
-			num = stk2.top();
-			while (stk1.top() > stk2.top())
-			{
-				stk3.push(stk2.top());
-				stk2.pop();
-				
-				if (stk2.empty())
-				{
-					num = -1;
-					break;
-				}
-
-				num = stk2.top();
-			}
-
-		}
-		while (!stk3.empty())
-		{
-			stk2.push(stk3.top());
-			stk3.pop();
-		}
-
-		stk4.push(num);
-		stk2.push(stk1.top());
-		stk1.pop();
-	}
-	while (!stk4.empty())
-	{
-		cout << stk4.top() << " ";
-		stk4.pop();
-	}
+		cout << resV[i] << " ";
+		
 }
+
+/*
+2중반복시 O(N^2)이므로 초과
+
+오른쪽 수 부터 검사한다 스택의 탑부터 비교하여 현재 인덱스보다 탑이 크면 탑이 오큰수가 된다
+
+스택이 empty가 되면 그 인덱스는 자기 자신이 오큰수가 된다 (-1)
+
+이후 검사가 끝난 수들은 스택에 쌓는다.
+
+O(N)
+
+
+
+*/
