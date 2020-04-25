@@ -33,14 +33,9 @@ int getGCD(int a, int b)			//유클리드 호제법 재귀형식
 
 int arrGCD(vector <int>V)			//벡터에서의 최대공약수 구하기
 {
-	int GCD;
+	int GCD= V[0];		
 
-	if (V.size() == 1)				//1개일 경우 자기 자신
-		return V[0];
-
-	GCD= getGCD(V[1], V[0]);		//첫 번째와 두 번째 원소의 최대공약수를 구함
-
-	for (int i = 2; i < V.size(); i++)
+	for (int i = 1; i < V.size(); i++)
 	{
 		if (GCD < V[i])
 			swap(GCD, V[i]);
