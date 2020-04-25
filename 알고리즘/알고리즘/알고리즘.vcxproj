@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="0021_200421_1676_팩토리얼 0의 개수.cpp" />
+    <ClCompile Include="0022_200422_2004_조합 0의 개수.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
