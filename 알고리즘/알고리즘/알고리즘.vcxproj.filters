@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="0025_200426_1212_8진수 2진수.cpp">
+    <ClCompile Include="0026_200426_17103_골드바흐 파티션.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
