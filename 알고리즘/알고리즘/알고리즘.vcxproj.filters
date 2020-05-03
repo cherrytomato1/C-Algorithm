@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="0031_200428_11052_카드 구매하기.cpp">
+    <ClCompile Include="0032_200503_16194_카드 구매하기 2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
