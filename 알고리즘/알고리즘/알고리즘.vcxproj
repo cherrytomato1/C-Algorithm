@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="0032_200503_16194_카드 구매하기 2.cpp" />
+    <ClCompile Include="0033_200503_15990_1, 2, 3 더하기 5.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
