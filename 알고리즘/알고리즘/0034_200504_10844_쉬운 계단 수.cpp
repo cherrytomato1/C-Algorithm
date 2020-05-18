@@ -12,9 +12,6 @@
 */
 
 #include<iostream>
-#include<string>
-#include<vector>
-#include<algorithm>
 
 #define mod 1000000000
 
