@@ -48,6 +48,7 @@ int main()
 				if (d[i][NUM] < d[j][NUM] && d[i][CNT] < d[j][CNT])			//숫자가 크면서, 수열크기도 클 경우
 				{
 					d[i][CNT] = d[j][CNT];									//최대 수열 크기를 받는다.
+
 					d[i][NextIND] = j;										//받아온 수의 인덱스를 저장한다
 				}
 			}

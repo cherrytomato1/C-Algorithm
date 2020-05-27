@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="0039_200518_14002_가장 긴 증가하는 부분 수열 4.cpp" />
+    <ClCompile Include="0041_200526_1912_연속합.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
