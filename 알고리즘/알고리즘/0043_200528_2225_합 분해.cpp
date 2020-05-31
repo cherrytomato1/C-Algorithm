@@ -27,7 +27,6 @@ int f(int n, int k)
 
 	for (int i = n; i >= 0; i--)
 	{
-
 		temp += f(i, k - 1);
 		temp %= mod;
 	}
