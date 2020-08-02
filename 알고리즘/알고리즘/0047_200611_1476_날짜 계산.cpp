@@ -1,7 +1,5 @@
 /*
 	1. e = e% 15 + 1,  s% 28 +1, m%19 +1
-
-
 */
 
 #include<iostream>
