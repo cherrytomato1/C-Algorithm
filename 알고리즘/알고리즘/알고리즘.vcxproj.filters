@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="0048_200801_1108_리모컨.cpp">
+    <ClCompile Include="구름0001_200824_길찾기(다이아몬드).cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
