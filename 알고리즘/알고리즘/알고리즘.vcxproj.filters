@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="구름0001_200824_길찾기(다이아몬드).cpp">
+    <ClCompile Include="0049_200826_14500_테트로미노.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
