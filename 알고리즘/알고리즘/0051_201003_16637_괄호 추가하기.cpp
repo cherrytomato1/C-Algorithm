@@ -8,6 +8,10 @@
 
 	수식은 항상 홀수이며 1<=N<=19임
 
+
+	3+3*2
+
+	332+*
 	3+3*2
 	-> (3+3)*2
 
@@ -28,5 +32,8 @@ int main()
 	cout.tie(NULL);
 
 	stack<char> stk;
+	string input;
+
+	cin >> input;
 
 }
