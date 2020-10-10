@@ -29,19 +29,6 @@ void f(stack<char>* stk,vector<char>* vctr, char x)
 {
 	switch (x)
 	{
-	case '0' :
-	case '1' :
-	case '2' :
-	case '3' :
-	case '4' :
-	case '5' :
-	case '6' :
-	case '7' :
-	case '8' :
-	case '9' :
-		vctr->push_back(x);
-		break;
-
 	case '+' :
 	case '-' :
 		if (!stk->empty())
@@ -67,7 +54,7 @@ void f(stack<char>* stk,vector<char>* vctr, char x)
 		break;
 	case '*' :
 	case '/' :
-		if(!stk->empty())
+		if (!stk->empty())
 			switch (stk->top())
 			{
 			case '*':
@@ -79,26 +66,30 @@ void f(stack<char>* stk,vector<char>* vctr, char x)
 			case '(':
 				stk->push(x);
 				break;
-			default :
+			default:
 				printf("op push error 2");
 				return;
 			}
+		else
+			stk->push(x);
 		break;
 	case '(' :
 		stk->push(x);
 		break;
 	case ')' :
-		while (!stk->empty())
+		while (stk->top()!='(')
 		{
 			vctr->push_back(stk->top());
 			stk->pop();
+			//printf(") test..\n");
 		}
+		stk->pop();
 		break;
 
 
 	default :
-		printf("input error\n");
-		return ;
+		vctr->push_back(x);
+		break;
 	}
 }
 
@@ -112,12 +103,9 @@ int main()
 	int length;
 	string str;
 	vector<char> postfix;
-
-	cin >> length;
-
 	cin >> str;
 
-	for (int i = 0; i < length; i++)
+	for (int i = 0; i < str.length(); i++)
 		f(&op_stk, &postfix, str[i]);
 
 	while (!op_stk.empty())

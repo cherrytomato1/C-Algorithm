@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="0051_201003_16637_괄호 추가하기.cpp">
+    <ClCompile Include="후위표기식2.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
