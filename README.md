@@ -1,2 +1,2 @@
-# Backjun_algorithm
-백준 알고리즘
+# 알고리즘 공부
+알고리즘 
