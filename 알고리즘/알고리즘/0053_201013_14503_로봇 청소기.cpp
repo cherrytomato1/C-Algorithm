@@ -31,8 +31,9 @@ typedef struct _robot {
 using namespace std;
 
 int map[MAX][MAX];
-int cnt = 0;
+int cnt = 0,turnCnt=0;
 robot rbt;
+int n, m; // n = y, m = x
 
 void setMap(int n, int m)
 {
@@ -45,10 +46,90 @@ void setMap(int n, int m)
 		}
 }
 
+void turnLeft()
+{
+	if (rbt.d == 0)
+		rbt.d = 4;
+	rbt.d--;
+	turnCnt++;
+}
+
+int chkFwrd(int tempX,int tempY,int dir)
+{
+	switch (dir)
+	{
+	case 0:
+		tempY--;
+		break;
+	case 1:
+		tempX++;
+		break;
+	case 2 :
+		tempY++;
+		break;
+	case 3 :
+		tempX--;
+		break;
+	}
+	return map[tempX][tempY];
+}
+
+void mvFwrd()
+{
+	switch (rbt.d)
+	{
+	case 0:
+		rbt.y--;
+		break;
+	case 1:
+		rbt.x++;
+		break;
+	case 2:
+		rbt.y++;
+		break;
+	case 3:
+		rbt.x--;
+		break;
+	}
+}
+
 void move()
 {
+	if (map[rbt.x][rbt.y] == 0)
+	{
+		map[rbt.x][rbt.y] = 2;
+		cnt++;
+
+		return;
+	}
+	turnLeft();
+	while (chkFwrd(rbt.x, rbt.y, rbt.d) != 0)
+	{
+		if (turnCnt == 4)
+		{
+			if (chkFwrd(rbt.x, rbt.y, (rbt.d + 2) % 4) == 1)
+			{
+				cout << cnt;
+				exit(0);
+
+			}
+			else
+			{
+				rbt.d = (rbt.d + 2) % 4;
+				mvFwrd();
+				rbt.d = (rbt.d + 2) % 4;
+				turnCnt = 0;
+				return;
+			}
+		}
+		turnLeft();
+	}
+	mvFwrd();
+	turnCnt = 0;
+	
 
 }
+
 
 int main() 
 {
@@ -56,17 +137,16 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int n, m, r, c, d; // n = y, m = x
-
 	cin >> n;
 	cin >> m;
-	cin >> r;
-	cin >> c;
-	cin >> d;
+	cin >> rbt.y;
+	cin >> rbt.x;
+	cin >> rbt.d;
 
 	setMap(n, m);
-	rbt.x = r;
-	rbt.y = c;
-	rbt.d = d;
+	while (1)
+		move();
+	
+	return 0;
 
 }
