@@ -1,8 +1,10 @@
 /*
 
-	지도를 옮겨가면서 예외처리 하고 지도의 상단을 출력해야함
+	이동할 때마다 주사위의 윗 면에 쓰여 있는 수를 출력한다. 
 
-	-->>링크드 리스트로 주사위 면 연결
+	주사위의 값과 현재 주사위에서 각 방향이 가르키는 값이 무엇인지 대치
+
+	x==세로 , y == 가로
 
 
 */
@@ -12,73 +14,43 @@
 
 #define MAX 20
 #define kMAX 1000
+#define CRNT 1
+#define UP 2
+#define RIGHT 3
+#define LEFT 4
+#define DOWN 5
+#define BACK 6
+
+#define EAST 1
+#define WEST 2
+#define NORTH 3
+#define SOUTH 4
 
 using namespace std;
 
-typedef struct dice {
-	int val;
-	dice* up;
-	dice* right;
-	dice* left;
-	dice* down;
-	dice* back;
 
-}dice;
-
-dice D[6];
 int map[MAX][MAX];
+int dice[6]= {0,};								// Dice의 Value
+int direction[7]= {-1, 0, 1, 2, 3, 4, 5};		// 각 방향을 갖고 있는 인덱스를 가르킴 
+int N, M, x, y, K, order;						
 
-
-void setDice()
+void rollDice(int ord)
 {
-	for (int i = 0; i < 6; i++)
-		D[i].val = 0;
-
-	D[0].up = &D[1];
-	D[0].right = &D[2];
-	D[0].left = &D[3];
-	D[0].down = &D[4];
-	D[0].back = &D[5];
-
-	D[1].up = &D[5];
-	D[1].right = &D[2];
-	D[1].left = &D[3];
-	D[1].down = &D[0];
-	D[1].back = &D[4];
-	
-	D[2].up = &D[1];
-	D[2].right = &D[2];
-	D[2].left = &D[3];
-	D[2].down = &D[4];
-	D[2].back = &D[5];
-
-	D[3].up = &D[1];
-	D[3].right = &D[2];
-	D[3].left = &D[3];
-	D[3].down = &D[4];
-	D[3].back = &D[5];
-
-	D[4].up = &D[1];
-	D[4].right = &D[2];
-	D[4].left = &D[3];
-	D[4].down = &D[4];
-	D[4].back = &D[5];
-
-	D[5].up = &D[1];
-	D[5].right = &D[2];
-	D[5].left = &D[3];
-	D[5].down = &D[4];
-	D[5].back = &D[5];
+	switch(ord)
+	{
+		case EAST :
+			if(y==0) 
+				return ;
+			y--;
+			
+	}
 }
-
 
 int main()
 {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
-	cout.tie(NULL);
-
-	int N, M, x, y, K, order;
+	cout.tie(NULL);	
 
 	cin >> N;
 	cin >> M;
@@ -90,14 +62,12 @@ int main()
 		for (int j = 0; j < M; j++)
 			cin >> map[i][j];
 
-
-	setDice();
 	
 
 	while (K--)
 	{
 		cin >> order;
-
+		rollDice(order);
 	}
 
 }
