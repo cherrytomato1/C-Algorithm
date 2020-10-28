@@ -15,31 +15,7 @@ using namespace std;
 
 string str1, str2;
 int cnt = 0;
-
-void d(int idx1, int idx2, int val)
-{
-    if(idx1 == str1.length() || idx2 == str2.length())
-    {
-        cnt = max(cnt, val);
-        return ;
-    }    
-
-    for (int i = idx1; i < str1.length(); i++)
-    {
-        for (int j = idx2; j< str2.length(); j++)
-        {
-            if(str1[i] == str2[j])
-            {
-                //cout << str1[i] << " == " << str2[j] << " , val ==" << val << "\n";
-                d(i + 1, j + 1, val+1);
-                return ;
-
-            }
-        }
-    }
-    
-    //cnt = max(cnt, val);
-}
+int d[1000+1][1000 + 1] = {0, };
 
 int main()
 {
@@ -54,7 +30,10 @@ int main()
 
     for(int i  = 0; i < str1.length(); i ++)
         for(int j = 0; j < str2.length(); j ++)
-            d(i,j,0);
+        {
+            if(str1[i] == str2[j])
+                d[i][j] = d[i-1][j-1] + 1;
+        }
     
     cout << cnt;   
 }
