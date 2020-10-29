@@ -5,8 +5,10 @@
 
     x + y - z
 
+    먼저 연산자와 수를 구분하여 저장한다.
 
-    -인 것들만 괄호를 열고 내용물은 + 하기만???
+    연산자를 순서대로 검사하며 - 일 경우 다음 -가 나올 때까지 모든 +연산을 -로 대치하면 된다.
+
 
 
 */
@@ -33,7 +35,7 @@ int main()
 
     cin >> str;
 
-    for(int i = 0 ; i < str.length() ; i++)
+    for(int i = 0 ; i < str.length() ; i++)     //연산자 구분과정
     {
         switch(str[i])
         {
@@ -48,33 +50,21 @@ int main()
             temp += str[i] - 48;
         }
     }
-    num.push_back(temp);
-
-/*
-    for (int i = 0 ; i < op.size() ; i++)
-    {
-        cout << num[i] << " ";
-        cout << op[i] << " ";
-        
-        if(i + 1 == op.size())
-            cout << num[i+1];
-    }
-*/
+    num.push_back(temp);                        //맨 마지막 수는 따로 추가한다.
 
 
-    //cout << "\n" << op.size() << " " << num.size() ;
-
-    res += num[0];
-    for(int i = 0; i < op.size() ; i++)
+    res += num[0];                              //맨 첫번째 수는 더하고 시작한다.
+    for(int i = 0; i < op.size() ; i++)         //연산자 끝까지 검사
     {   
-        if(op[i] == '-'){
-            res -= num[i+1];
-            while(++i <op.size() && op[i] == '+')
+        if(op[i] == '-')                        // - 일 경우 다음 - 연산이 나올때까지 모두 뺀다(괄호로 취급)
+        {
+            res -= num[i+1];                    //num의 index에 +1을 함으로 다음 숫자를 연산
+            while(++i <op.size() && op[i] == '+')       //범위를 초과하지 않는 이내에서 +연산일 경우 반복
                 res -= num[i+1];
-            i--;
+            i--;                                //+ 검사를 위해 ++했기 때문에 index 값을 다시 맞추어준다
         }
         else
-            res += num[i+1];
+            res += num[i+1];                    //ㄷㅓ하기면 그냥 더함
     }
 
     cout << res;
