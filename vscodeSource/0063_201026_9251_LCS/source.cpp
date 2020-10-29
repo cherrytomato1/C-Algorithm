@@ -32,8 +32,14 @@ int main()
         for(int j = 0; j < str2.length(); j ++)
         {
             if(str1[i] == str2[j])
-                d[i][j] = d[i-1][j-1] + 1;
+                d[i+1][j+1] = d[i][j] + 1;
+            else
+                d[i+1][j+1] = max(d[i][j+1], d[i+1][j]);
         }
     
+    for (int i = 0 ; i < 1000+1 ; i++)
+        for(int j = 0; j < 1000 + 1 ; j++ )
+            cnt = max(cnt , d[i][j]);
+
     cout << cnt;   
 }
