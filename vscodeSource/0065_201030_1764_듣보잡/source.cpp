@@ -8,6 +8,7 @@
 using namespace std;
 
 vector<string> vtr;
+vector<string> vtr2;
 
 string d[max];
 string b[max];
@@ -21,29 +22,32 @@ int main()
 
     int N, M, cnt = 0;
 
+    string temp;
     cin >> N;
     cin >> M;
 
     for (int i = 0 ; i < N ; i++)
-        cin >> d[i];
+    {    //cin >> d[i];
+        cin >> temp;
+        vtr.push_back(temp);
+    }
 
     for (int i = 0 ; i < M ; i++)
-        cin >> b[i];
-           
-    for (int i = 0 ; i < N ; i++)
-        for (int j = 0; j < M ; j++)
-            if(d[i] == b[j])
-            {
-                cnt++;
-                vtr.push_back(d[i]);
-                break;
-            }
-
+    {
+        //cin >> b[i];
+        cin >> temp;
+        vtr.push_back(temp);
+    }
     sort(vtr.begin(), vtr.end());
-    cout << cnt;
+
+    for (int i = 0 ; i < vtr.size()-1; i++)
+        if(vtr[i] == vtr[i+1])
+            vtr2.push_back(vtr[i]);
+
+    cout << vtr2.size();
     
-    for(int i = 0 ; i < vtr.size(); i ++ )
-        cout << "\n" << vtr[i] ;
+    for(int i = 0 ; i < vtr2.size(); i ++ )
+        cout << "\n" << vtr2[i] ;
 }
 /*            if(d[i].length() == b[j].length())
             {    
