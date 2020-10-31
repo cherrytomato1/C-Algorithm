@@ -10,31 +10,26 @@ using namespace std;
 vector<string> vtr;
 vector<string> vtr2;
 
-string d[max];
-string b[max];
-
-
 int main()
 {
     ios_base :: sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int N, M, cnt = 0;
+    int N, M;
 
     string temp;
     cin >> N;
     cin >> M;
 
     for (int i = 0 ; i < N ; i++)
-    {    //cin >> d[i];
+    {    
         cin >> temp;
         vtr.push_back(temp);
     }
 
     for (int i = 0 ; i < M ; i++)
     {
-        //cin >> b[i];
         cin >> temp;
         vtr.push_back(temp);
     }
@@ -49,15 +44,3 @@ int main()
     for(int i = 0 ; i < vtr2.size(); i ++ )
         cout << "\n" << vtr2[i] ;
 }
-/*            if(d[i].length() == b[j].length())
-            {    
-                for(k = 0; k < d[i].length() && k < b[j].length(); k ++)
-                    if(d[i][k]!=b[j][k])
-                        break;
-                if( k == d[i].length() )
-                {
-                    cnt++;
-                    break;
-                }
-            }
-*/
