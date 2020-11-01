@@ -7,14 +7,17 @@
 
     L = 명령회수
 
-    row 초 뒤 L(왼쪽), D(오른쪽) 으로 변환
+    x 초 후 L 명령의 방향 전환
+
+    행 col 열 row x y
 
 
+    뱀의 몸을 큐로 표현하여 사과를 안 먹을 시 pop
 */
 
-#include<iostream>
-#include<queue>
-#include<vector>
+#include <iostream>
+#include <queue>
+#include <vector>
 
 #define nMAX 100 + 1
 #define oMAX 10000 + 1
@@ -27,10 +30,11 @@
 #define APPLE 1
 #define BODY 2
 
-typedef struct{
+typedef struct
+{
     int row;
     int col;
-}snake;
+} snake;
 
 using namespace std;
 
@@ -38,86 +42,79 @@ int N, L, K, row, col, T, sec = 0;
 
 int dir = RIGHT;
 char O;
-char ord[oMAX] = { 0 };
+char ord[oMAX] = {0};
 
 int map[nMAX][nMAX] = {0};
 
 queue<snake> snk;
 snake temp;
 
-
 void mv()
 {
-    while(1)
+    while (1)
     {
         sec++;
         temp.row = snk.back().row;
         temp.col = snk.back().col;
 
-        switch(dir)
+        switch (dir)
         {
-        case RIGHT :
+        case RIGHT:
             temp.row++;
             break;
-        case LEFT :
+        case LEFT:
             temp.row--;
             break;
-        case UP :
+        case UP:
             temp.col--;
             break;
-        case DOWN :
+        case DOWN:
             temp.col++;
         }
 
         snk.push(temp);
-        
-        if(snk.back().row < 1 || snk.back().row == N + 1 || snk.back().col < 1 || snk.back().col == N + 1 || map[snk.back().row][snk.back().col] == BODY)
+
+        if (snk.back().row < 1 || snk.back().row == N + 1 || snk.back().col < 1 || snk.back().col == N + 1 || map[snk.back().row][snk.back().col] == BODY)
             break;
-        
-              
-        else if(map[snk.back().row][snk.back().col] != APPLE)
+
+        else if (map[snk.back().row][snk.back().col] != APPLE)
         {
             map[snk.front().row][snk.front().col] = 0;
             snk.pop();
         }
-        
-        map[snk.back().row][snk.back().col] = BODY;
 
-        //cout << " sec : " << sec << " (" << snk.back().row << ", " << snk.back().col << ") , length = " << snk.size() << " \n";
+        map[snk.back().row][snk.back().col] = BODY;
 
         if (ord[sec] == 'L')
             dir = (dir + 4 - 1) % 4;
         else if (ord[sec] == 'D')
             dir = (dir + 1) % 4;
     }
-    snk.pop();                                  //마지막에 pop 없음
+    snk.pop(); //마지막에 pop 없음
 
     cout << sec << "\n";
-    //cout << snk.size();
     return;
 }
 
-
 int main()
 {
-    ios_base :: sync_with_stdio(false);
+    ios_base ::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
 
     cin >> N;
     cin >> K;
 
-    while(K--)
+    while (K--)
     {
         cin >> col;
         cin >> row;
 
         map[row][col] = APPLE;
-        //cout << map[row][col] << "/";
     }
 
     cin >> L;
-    for(int i = 0 ; i < L ; i++)
+    for (int i = 0; i < L; i++)
     {
         cin >> T;
         cin >> O;
@@ -129,8 +126,6 @@ int main()
     temp.col = 1;
 
     snk.push(temp);
-
-
 
     mv();
 }
