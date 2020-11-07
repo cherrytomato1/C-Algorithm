@@ -1,5 +1,12 @@
+/*
+    그리디 알고리즘 ,
+    오름차순으로 주어지는 동전 크기를 배열에 큰 숫자부터 담아서
+    동전크기가 남은 돈을 초과할 경우에만 다음 동전과 비교함(인덱스++)
+
+
+*/
+
 #include <iostream>
-#include <vector>
 
 #define aMAX 10
 
@@ -22,7 +29,6 @@ int main()
     for(int i = N-1 ; i >= 0 ; i-- )
         cin >> arr[i];
 
-    //cout << "good" ;
     while(K!=0)
     {
         if(K < arr[idx])
