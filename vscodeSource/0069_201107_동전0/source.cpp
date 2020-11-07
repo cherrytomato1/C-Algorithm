@@ -20,8 +20,9 @@ int main()
     cin >> K;
 
     for(int i = N-1 ; i >= 0 ; i-- )
-        arr[i] = temp;
+        cin >> arr[i];
 
+    //cout << "good" ;
     while(K!=0)
     {
         if(K < arr[idx])
