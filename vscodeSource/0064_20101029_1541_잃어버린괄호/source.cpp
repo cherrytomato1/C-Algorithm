@@ -9,15 +9,6 @@
 
     연산자를 순서대로 검사하며 - 일 경우 다음 -가 나올 때까지 모든 +연산을 -로 대치하면 된다.
 
-    #include<iostream>
-    #include<vector>
-    #include<algorithm>
-    using namespace std;
-
-    ios_base :: sync_with_stdio(false)
-    cin.tie(NULL);
-    cout.tie(NULL);
-
 
 
 */

@@ -21,7 +21,7 @@ using namespace std;
 
 int T[4][8] = {0};
 
-void roll(int idx, int preIdx, int ord)
+void roll(int idx, int preIdx, int ord) 
 {
     int temp ;
     
