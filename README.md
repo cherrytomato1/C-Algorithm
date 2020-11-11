@@ -43,4 +43,21 @@
  https://su-m.tistory.com/7
  
  https://stackoverflow.com/questions/31162367/significance-of-ios-basesync-with-stdiofalse-cin-tienull
+ 
+ ### STL
+ 
+ #### Sort
+ - algorithm 헤더에 포함
+ 
+```template <typename T>
+void sort(T start, T end);
+
+template <typename T>
+void sort(T start, T end, Compare comp);
+```
+ - sort를 하고자하는 데이터의 시작주소와 끝 주소를 매개변수로 받음
+ - quick sort 기반으로 O(nlogn)의 시간복잡도
+ - 기본적으로 오름차순으로 정렬, comp 매개변수 입력으로 사용자 정의 크기 비교 알고리즘 적용가능
+ 
+ 
   
