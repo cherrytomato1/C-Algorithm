@@ -49,7 +49,8 @@
  #### Sort
  - algorithm 헤더에 포함
  
-```template <typename T>
+```
+template <typename T>
 void sort(T start, T end);
 
 template <typename T>
