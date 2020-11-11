@@ -56,14 +56,14 @@ int solve()
 {
     int sum = 0;
 
-    for (int i = 0; i < vtr.size() ; i++)
+    for (int i = 0; i < vtr.size() ; i++)           //벡터의 인덱스 증감, 더이상 비교할 추가 없으면 반복 종료
     {
-        if( vtr[i] > sum + 1)
+        if( vtr[i] > sum + 1)                       //현재의 추와 누적합 비교, 누적합+1보다 추가 크다면 거기서 종료
             return sum + 1;
 
-        sum += vtr[i];
+        sum += vtr[i];                              //비교가 끝났다면 추를 누적합에 더함.
     }
-    return sum + 1;
+    return sum + 1;                                 //비교할 추가 없으면 현재 누적합+1이 해임
 }
 
 int main()
