@@ -9,6 +9,16 @@
 
 
 ## 시간복잡도
+- 시간복잡도
+  -- 시간복잡도는 입력에 따라 프로그램이 동작하는 연산속도를 정의
+  -- 시간복잡도를 지정할 때 최악의 경우(worst case)를 기준으로 작성함
+
+- Big-O 표기법
+  -- 시간복잡도를 수식으로 표현
+  -- 상수는 식에서 제외, 최고차항의 계수를 갖도록 표현 (예 : n^3 + 50n^2 + 100n + 1000 -> O(n^3)
+  -- 시간복잡도를 고려한 알고리즘 작성이 필요
+  
+
 
 ![complexity](https://github.com/cherrytomato1/Algorithm/blob/master/images/time_complexity.png)
 
