@@ -1,30 +1,24 @@
 /*
 
+    스케줄링 : 이미 작업 중인 프로세스 중 다음에 가장 나중에 사용될 요소를 제거
 
-    스케줄링 => 남은 리스트에서 가장 사용이 늦은 요소를 제외?
+    n = 100
+    k = 100
 
-    2 3 4 2 3 3 3 3
+    다음에 쓰일 때 가장 나중에 쓰이는 요소만 찾아 검사하고 이외의 경우는 생각하지 않으므로
+    그리디 알고리즘임
 
-    2구
+    1. 플러그가 비어있을 경우
+        - 모든 작업 요청에 대해 반복(k)
+        1. 1 -> 작업목록을 검사하여 이미 해당작업이 있을 경우 넣지 않는다 n*k
+        1. 2 -> 처음으로 들어오는 작업일 경우 해당 작업을 push 
 
-    2 3 4 3 4 3 2 2 2 4
-    사용횟수
-    2 = 4, 3 = 3 , 4 = 3
-
-    0. 2 0 <- 2             
-    1. 2 3 <- 3 
-    2. 4 3 <- 4 / +1        남은 2 =3, 3 =2 , 4=3    
-    3. 4 3 <- 3
-    4. 4 3 <- 4
-    5. 4 3 <- 3
-    6. 4 2 <- 2 / +1
-    7. 4 2 <- 2 
-    8. 4 2 <- 2
-    9. 4 2 <- 2
-
-    2회  
-
-
+    2. 플러그가 가득찼을 경우, 빼야하는 경우 (k)
+        2. 1 -> 작업목록을 검사하여 해당 작업이 이미 있을 경우 break (n*k)
+        2. 2 -> 작업목록에 해당 작업이 없을 경우
+            2.2.3 -> 작업목록에 있는 작업이 작업요청 목록에 몇 번째 인덱스에 있는 지 검사 (n* k^2)
+            2.2.4 -> 작업요청목록에 인덱스가 가장 큰 작업요청을 작업목록에서 뺀다
+            2.2.5 -> 해당 작업목록이 작업 요청목록에 없을경우(다음에 쓰이지 않을 경우) 우선순위 부여
     
 
 */
@@ -38,7 +32,7 @@ using namespace std;
 vector<int> vtr;
 vector<int> prcss;
 
-void getOrder(int K)
+void getOrder(int K)            //작업요청명령 받기
 {
     int a;
     while(K--)
@@ -53,74 +47,58 @@ int solution(int N, int K)
     int answer = 0;
     int index = 1, waiting, next = -1;
     
-    prcss.push_back(vtr[0]);
+    prcss.push_back(vtr[0]);          //첫 번쨰 작업요청은 바로 작업목록에 넣는다
 
-    for(; index < K; index++)
+    for(; index < K; index++)         //모든 작업요청에 대해 반복
     {
-        if(prcss.size() < N)
+        if(prcss.size() < N)          //플러그가 가득 차지 않았을 경우
         {
-            //cout << prcss.size() << " , " << vtr[index] <<   "!!!!\n";
-            for(int i = 0 ; i < prcss.size() ; i++)
+            for(int i = 0 ; i < prcss.size() ; i++)     //작업중인 목록 검사
             {
-                if(prcss[i] == vtr[index])
-                {
-                    //cout << "breaK1!! : " << prcss[i] << " = " << vtr[index] << ", " << i <<index << "\n";
+                if(prcss[i] == vtr[index])              //넣으려는 작업이 이미 작업목록에 존재하는 경우
                     break;
-                }
-                if(i == prcss.size() - 1)
+                if(i == prcss.size() - 1)               //검사가 끝났음에도 동일 작업이 검출되지 않았을 경우
                 {
-                    //cout << "push !!! : " << vtr[index] << "\n" ;
                     prcss.push_back(vtr[index]);
                     break;
                 }
-//                cout << index << "! " << i << "\n";
             }
-            //for(int i = 0 ; i < prcss.size(); i++)
-                //cout <<prcss[i] << " " ;
-            //cout << "\n";
             continue;
         }
         
-        waiting = 0;
-        for(int i = 0; i < N ; i ++)
+        waiting = 0;                //작업요청목록에서의 인덱스 저장
+        for(int i = 0; i < N ; i ++)            //현재 작업중인 목록 검사
         {
-            if(prcss[i] == vtr[index])
+            if(prcss[i] == vtr[index])          //이미 존재할 경우 break;
             {
                 next = -1;
-                //cout << prcss[i] << " = " << vtr[index] << " ; break! , index = " << index << "\n";
                 break;
             }
             
-            for(int j = index ; j < K ; j++)
+            for(int j = index ; j < K ; j++)    //작업 요청목록 검사
             {
-                if(vtr[j] == prcss[i])
+                if(vtr[j] == prcss[i])          //작업요청목록에서 작업을 발견했을 경우
                 {
-                    if(waiting <= j)
+                    if(waiting <= j)            //가장 높은 인덱스를 갖는 경우
                     {
-                        waiting = j;
+                        waiting = j;            //다음 교체 작업 갱신
                         next = i;
                     }
                     break;
                 }
-                if(j == K - 1)
+                if(j == K - 1)                  //검사가 끝났음에도 검출되지 않은 경우, 해당 작업이 다음에 쓰이지 않을 경우
                 {
-                    waiting = K+1;
+                    waiting = K+1;              //우선 순위 부여
                     next = i;
                 }
             }
         }
 
-        if(next != -1)
+        if(next != -1)                          //작업이 이미 있는 경우가 아닐 때
         {
-            prcss[next] = vtr[index];
+            prcss[next] = vtr[index];           //작업 교체
             answer++;
         }
-
-        //for(int i = 0 ; i < N; i++)
-            //cout <<prcss[i] << " " ;
-
-        //cout << "next = " << next ;
-        //cout << ", vtr[index] =  " << vtr[index]  <<"\n";
     }
     return answer;
 }
