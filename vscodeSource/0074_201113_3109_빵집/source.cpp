@@ -44,9 +44,10 @@
 using namespace std;
 
 vector< vector <int> > map;
+int R,C;
 
 
-void getMap(int R, int C)
+void getMap()
 {
     char in; 
     for(int row = 0 ; row < R ; row++)
@@ -74,19 +75,19 @@ void getMap(int R, int C)
     */
 }
 
-int checkContact(vector <int> rowmap1, vector <int> rowmap2, int idx, int preidx1, int preidx2)
+int checkContact(bool rowmap1[rMAX], bool rowmap2[rMAX], int idx, int preidx1, int preidx2)
 {
     int contact = 0;
 
-    if(idx == rowmap1.size())
+    if(idx == R)
         return 0;
 
     //cout << idx << "\n";
 
     if(preidx1 != NOTCHK)
-        rowmap1[preidx1] = CHECKED;
+        rowmap1[preidx1] = WALL;
     if(preidx2 != NOTCHK)
-        rowmap2[preidx2] = CHECKED;
+        rowmap2[preidx2] = WALL;
 
     if(idx == 0)
     {
@@ -107,7 +108,7 @@ int checkContact(vector <int> rowmap1, vector <int> rowmap2, int idx, int preidx
         return contact;
     }
 
-    else if(idx == rowmap1.size() - 1)
+    else if(idx == R - 1)
     {
         if(rowmap1[idx] == BLANK && rowmap2[idx - 1] == BLANK)
         {
@@ -154,15 +155,12 @@ int checkContact(vector <int> rowmap1, vector <int> rowmap2, int idx, int preidx
 }
 
     
-int solution(int R, int C)
+int solution()
 {
     int answer = C;
     //int answer = 0;
-    vector<int> rowmap1;
-    vector<int> rowmap2;
-
-    rowmap1.resize(R);
-    rowmap2.resize(R);
+    bool rowmap1[rMAX];
+    bool rowmap2[rMAX];
 
     for(int col = 1 ; col < C-2  ; col++)
     {
@@ -187,12 +185,10 @@ int main()
     ios_base :: sync_with_stdio(false);
     cin.tie(NULL);
 
-    int R, C;
-
     cin >> R ;
     cin >> C ;
 
-    getMap(R,C);
-    cout << solution(R,C);
+    getMap();
+    cout << solution();
 
 }
