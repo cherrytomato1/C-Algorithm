@@ -28,12 +28,12 @@
 
 ### 클래스와 구조체
 
- - 클래스와 구조체의 차이
+- 클래스와 구조체의 차이
   - 멤버 메소드 존재의 차이
   - 상속의 유무
   - 접근 지정자 사용의 유무
   
- - 구조체를 사용할 때
+- 구조체를 사용할 때
   - 자료형만의 정의
   - 접근 지정자를 사용할 필요가 없을 때(모든 멤버가 public으로 사용되어도 충분할 때)
 
@@ -90,6 +90,9 @@ void sort(T start, T end, Compare comp);
   - 순회는 전위 순회(pre-order), 중위 순회(in-order), 후위 순회(post-order)의 방법을 갖는다
   
   
+
+
+![tree](https://github.com/cherrytomato1/Algorithm/blob/master/images/tree-terms.png)
 - 트리 용어
 
   - 루트 노드(root node): 부모가 없는 노드, 트리는 하나의 루트 노드만을 가진다.
