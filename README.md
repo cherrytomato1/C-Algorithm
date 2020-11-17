@@ -6,6 +6,10 @@
 
 - Solved.ac
   - https://solved.ac/profile/terec
+  
+<details>
+<summary>시간 복잡도</summary>
+<div markdown="1">       
 
 
 ## 시간복잡도
@@ -23,7 +27,13 @@
 
 ![complexity](https://github.com/cherrytomato1/Algorithm/blob/master/images/time_complexity.png)
 
+</div>
+</details>
 
+
+<details>
+<summary>C++</summary>
+<div markdown="1">       
 
 ## C++
 
@@ -78,6 +88,16 @@ void sort(T start, T end, Compare comp);
  - quick sort 기반으로 O(nlogn)의 시간복잡도
  - 기본적으로 오름차순으로 정렬, comp 매개변수 입력으로 사용자 정의 크기 비교 알고리즘 적용가능
  
+ 
+</div>
+</details>
+
+
+<details>
+<summary>자료구조</summary>
+<div markdown="1">       
+
+ 
 ## 자료구조
 
 ### 그래프
@@ -117,3 +137,6 @@ void sort(T start, T end, Compare comp);
   https://gmlwjd9405.github.io/2018/08/12/data-structure-tree.html
   
 
+
+</div>
+</details>
