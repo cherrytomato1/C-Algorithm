@@ -24,9 +24,13 @@
 ![complexity](https://github.com/cherrytomato1/Algorithm/blob/master/images/time_complexity.png)
 
 
-## 개념
 
-### 클래스와 구조체
+## C++
+
+
+### 개념
+
+#### 클래스와 구조체
 
 - 클래스와 구조체의 차이
   - 멤버 메소드 존재의 차이
@@ -37,9 +41,9 @@
   - 자료형만의 정의
   - 접근 지정자를 사용할 필요가 없을 때(모든 멤버가 public으로 사용되어도 충분할 때)
 
-## C++
+### 함수/활용
 
-### input/output
+#### input/output
 
  - ```using namespace std```;
     - iostream에 정의되어있는 std namespace를 사용한다는 뜻 cin, cout등의 namespace에서 std를 생략하여 활용하기 위함
@@ -58,9 +62,9 @@
  https://stackoverflow.com/questions/31162367/significance-of-ios-basesync-with-stdiofalse-cin-tienull
  
  
- ### STL
+ #### STL
  
- #### Sort
+ ##### Sort
  - algorithm 헤더에 포함
  
 ```
@@ -75,6 +79,9 @@ void sort(T start, T end, Compare comp);
  - 기본적으로 오름차순으로 정렬, comp 매개변수 입력으로 사용자 정의 크기 비교 알고리즘 적용가능
  
 ## 자료구조
+
+### 그래프
+
 
 ### 트리
 - 트리의 정의
@@ -106,4 +113,7 @@ void sort(T start, T end, Compare comp);
   - 노드의 차수(degree): 하위 트리 개수 / 간선 수 (degree) = 각 노드가 지닌 가지의 수
   - 트리의 차수(degree of tree): 트리의 최대 차수
   - 트리의 높이(height): 루트 노드에서 가장 깊숙히 있는 노드의 깊이
+  
+  https://gmlwjd9405.github.io/2018/08/12/data-structure-tree.html
+  
 
