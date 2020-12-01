@@ -7,7 +7,7 @@
 - Solved.ac
   - https://solved.ac/profile/terec
   
-- 참고 : 알고리즘 
+- 참고  : 알고리즘 문제해결 전략
   
 <details>
 <summary>시간 복잡도</summary>
