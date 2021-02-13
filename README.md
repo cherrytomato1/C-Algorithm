@@ -1,13 +1,6 @@
 # 알고리즘 공부
 
 - Baekjoon Online judge
-  - https://www.acmicpc.net/user/terec
-
-
-- Solved.ac
-  - https://solved.ac/profile/terec
-  
-- 참고  : 알고리즘 문제해결 전략
   
 <details>
 <summary>시간 복잡도</summary>
