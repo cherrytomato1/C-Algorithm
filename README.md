@@ -1,6 +1,4 @@
-# 알고리즘 공부
-
-- Baekjoon Online judge
+# C++ 알고리즘
   
 <details>
 <summary>시간 복잡도</summary>
